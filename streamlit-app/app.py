@@ -3,12 +3,12 @@ import pandas as pd
 import plotly.express as px
 
 st.set_page_config(
-    page_title="Coustomer Churn Prediction",
+    page_title="Machine Learning-Based Customer Churn Prediction",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
 
-st.title("Coustomer Churn Prediction")
+st.title("Machine Learning-Based Customer Churn Prediction")
 st.divider()
 df = pd.read_csv("../data/Churn-Prediction-dataset.csv")
 
@@ -271,4 +271,4 @@ with dataset:
 
 with try_now:
     if st.button("Try Now"):
-        st.switch_page("trypage.py")
+        st.switch_page("pages/trynow.py")
