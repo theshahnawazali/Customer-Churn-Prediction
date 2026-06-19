@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+from pathlib import Path
 
 st.set_page_config(
     page_title="Machine Learning-Based Customer Churn Prediction",
@@ -8,9 +9,11 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
+BASE_PATH = Path(__file__).resolve().parents[1]
+
 st.title("Machine Learning-Based Customer Churn Prediction")
 st.divider()
-df = pd.read_csv("../data/Churn-Prediction-dataset.csv")
+df = pd.read_csv(BASE_PATH / "data" / "Churn-Prediction-dataset.csv")
 
 
 st.markdown("""
