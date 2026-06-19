@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+from pathlib import Path
 
 st.set_page_config(
     page_title="Machine Learning-Based Customer Churn Prediction",
@@ -10,6 +11,8 @@ st.set_page_config(
 st.title("Machine Learning-Based Customer Churn Prediction")
 st.divider()
 
-df = pd.read_csv("../data/Churn-Prediction-dataset.csv")
+
+BASE_PATH = Path(__file__).resolve().parents[1]
+df = pd.read_csv(BASE_PATH / "data" / "Churn-Prediction-dataset.csv")
 
 st.write(df)
