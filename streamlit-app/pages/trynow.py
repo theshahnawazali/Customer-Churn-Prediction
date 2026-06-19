@@ -32,152 +32,158 @@ Random_Forest_model = joblib.load(rf_model_path)
 
 # ================== User Form ============================
 with st.form("Try Now Form"):
-    Name = st.text_input("Enter Your Name")
-    gender = st.selectbox(
-        "What is your gender?",
-        ["Male", "Female"],
-        index=None,
-        placeholder="Select Gender"
-    )
-
-    SeniorCitizen = st.selectbox(
-        "Are you a senior citizen (60+ years)?",
-        [0, 1],
-        index=None,
-        placeholder="Select Option"
-    )
-
-    Partner = st.selectbox(
-        "Do you have a partner/spouse?",
-        ["Yes", "No"],
-        index=None,
-        placeholder="Select Option"
-    )
-
-    tenure = st.number_input(
-        "How many months have you been using the service?",
-        min_value=0,
-        max_value=100,
-        step=1,
-        value=None,
-        placeholder="Enter number of months"
-    )
+    col1 , col2 = st.columns([1,1])
     
-    Dependents = st.selectbox(
-        "Do you have dependents?",
-        ["Yes", "No"],
-        index=None,
-        placeholder="Select Option"
-    )
+    with col1:
+        Name = st.text_input("Enter Your Name", placeholder="Enter Your Name Here")
+        
+        SeniorCitizen = st.selectbox(
+            "Are you a senior citizen (60+ years)?",
+            [0, 1],
+            index=None,
+            placeholder="Select Option"
+        )
 
-    PhoneService = st.selectbox(
-        "Do you have phone service?",
-        ["Yes", "No"],
-        index=None,
-        placeholder="Select Option"
-    )
+        tenure = st.number_input(
+            "How many months have you been using the service?",
+            min_value=0,
+            max_value=100,
+            step=1,
+            value=None,
+            placeholder="Enter number of months"
+        )
 
-    MultipleLines = st.selectbox(
-        "Do you use multiple phone lines?",
-        ["Yes", "No", "No phone service"],
-        index=None,
-        placeholder="Select Option"
-    )
+        PhoneService = st.selectbox(
+            "Do you have phone service?",
+            ["Yes", "No"],
+            index=None,
+            placeholder="Select Option"
+        )
 
-    InternetService = st.selectbox(
-        "What type of internet service do you use?",
-        ["DSL", "Fiber optic", "No"],
-        index=None,
-        placeholder="Select Internet Service"
-    )
+        InternetService = st.selectbox(
+            "What type of internet service do you use?",
+            ["DSL", "Fiber optic", "No"],
+            index=None,
+            placeholder="Select Internet Service"
+        )
 
-    OnlineSecurity = st.selectbox(
-        "Do you have online security service?",
-        ["Yes", "No", "No internet service"],
-        index=None,
-        placeholder="Select Option"
-    )
+        OnlineBackup = st.selectbox(
+            "Do you have online backup service?",
+            ["Yes", "No", "No internet service"],
+            index=None,
+            placeholder="Select Option"
+        )
 
-    OnlineBackup = st.selectbox(
-        "Do you have online backup service?",
-        ["Yes", "No", "No internet service"],
-        index=None,
-        placeholder="Select Option"
-    )
+        StreamingTV = st.selectbox(
+            "Do you use TV streaming service?",
+            ["Yes", "No", "No internet service"],
+            index=None,
+            placeholder="Select Option"
+        )
 
-    DeviceProtection = st.selectbox(
-        "Do you have device protection service?",
-        ["Yes", "No", "No internet service"],
-        index=None,
-        placeholder="Select Option"
-    )
+        Contract = st.selectbox(
+            "What type of contract do you have?",
+            ["Month-to-month", "One year", "Two year"],
+            index=None,
+            placeholder="Select Contract Type"
+        )
 
-    TechSupport = st.selectbox(
-        "Do you have technical support service?",
-        ["Yes", "No", "No internet service"],
-        index=None,
-        placeholder="Select Option"
-    )
+        PaymentMethod = st.selectbox(
+            "Which payment method do you use?",
+            [
+                "Electronic check",
+                "Mailed check",
+                "Bank transfer (automatic)",
+                "Credit card (automatic)"
+            ],
+            index=None,
+            placeholder="Select Payment Method"
+        )
 
-    StreamingTV = st.selectbox(
-        "Do you use TV streaming service?",
-        ["Yes", "No", "No internet service"],
-        index=None,
-        placeholder="Select Option"
-    )
+        OnlineSecurity = st.selectbox(
+            "Do you have online security service?",
+            ["Yes", "No", "No internet service"],
+            index=None,
+            placeholder="Select Option"
+        )
 
-    StreamingMovies = st.selectbox(
-        "Do you use movie streaming service?",
-        ["Yes", "No", "No internet service"],
-        index=None,
-        placeholder="Select Option"
-    )
 
-    Contract = st.selectbox(
-        "What type of contract do you have?",
-        ["Month-to-month", "One year", "Two year"],
-        index=None,
-        placeholder="Select Contract Type"
-    )
+    with col2:
+        gender = st.selectbox(
+            "What is your gender?",
+            ["Male", "Female"],
+            index=None,
+            placeholder="Select Gender"
+        )
 
-    PaperlessBilling = st.selectbox(
-        "Do you receive bills electronically (paperless billing)?",
-        ["Yes", "No"],
-        index=None,
-        placeholder="Select Option"
-    )
+        Partner = st.selectbox(
+            "Do you have a partner/spouse?",
+            ["Yes", "No"],
+            index=None,
+            placeholder="Select Option"
+        )
 
-    PaymentMethod = st.selectbox(
-        "Which payment method do you use?",
-        [
-            "Electronic check",
-            "Mailed check",
-            "Bank transfer (automatic)",
-            "Credit card (automatic)"
-        ],
-        index=None,
-        placeholder="Select Payment Method"
-    )
+        Dependents = st.selectbox(
+            "Do you have dependents?",
+            ["Yes", "No"],
+            index=None,
+            placeholder="Select Option"
+        )
 
-    MonthlyCharges = st.number_input(
-        "What is your monthly bill amount (₹)?",
-        min_value=0.0,
-        step=0.01,
-        value=None,
-        placeholder="Enter monthly charges"
-    )
+        MultipleLines = st.selectbox(
+            "Do you use multiple phone lines?",
+            ["Yes", "No", "No phone service"],
+            index=None,
+            placeholder="Select Option"
+        )
 
-    algorithms = st.selectbox(
-        "Select an Model",
-        [
-            "Logistic Regression",
-            "Decision Tree",
-            "K Nearest Neibours",
-            "Random Forest",
-        ],
-        index=None,
-        placeholder="Select Model"
-    )
+        DeviceProtection = st.selectbox(
+            "Do you have device protection service?",
+            ["Yes", "No", "No internet service"],
+            index=None,
+            placeholder="Select Option"
+        )
+
+        TechSupport = st.selectbox(
+            "Do you have technical support service?",
+            ["Yes", "No", "No internet service"],
+            index=None,
+            placeholder="Select Option"
+        )
+
+        StreamingMovies = st.selectbox(
+            "Do you use movie streaming service?",
+            ["Yes", "No", "No internet service"],
+            index=None,
+            placeholder="Select Option"
+        )
+
+       
+        PaperlessBilling = st.selectbox(
+            "Do you receive bills electronically (paperless billing)?",
+            ["Yes", "No"],
+            index=None,
+            placeholder="Select Option"
+        )
+
+        MonthlyCharges = st.number_input(
+            "What is your monthly bill amount (₹)?",
+            min_value=0.0,
+            step=0.01,
+            value=None,
+            placeholder="Enter monthly charges"
+        )
+        algorithms = st.selectbox(
+            "Select an Model",
+            [
+                "Logistic Regression",
+                "Decision Tree",
+                "K Nearest Neibours",
+                "Random Forest",
+            ],
+            index=None,
+            placeholder="Select Model"
+        )
 
     btn = st.form_submit_button("Submit")
 
