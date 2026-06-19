@@ -12,7 +12,7 @@ st.title("Machine Learning-Based Customer Churn Prediction")
 st.divider()
 
 
-BASE_PATH = Path(__file__).resolve().parents[1]
+BASE_PATH = Path(__file__).resolve().parents[2]
 df = pd.read_csv(BASE_PATH / "data" / "Churn-Prediction-dataset.csv")
 
 st.write(df)
